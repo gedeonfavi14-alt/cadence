@@ -268,7 +268,7 @@ export default function DishFullscreen({
           {categories.map((cat, idx) => {
             const isNearby = Math.abs(idx - currentCatIndex) <= 1;
             return (
-            <div key={cat} className="w-[100dvw] h-[100dvh] shrink-0 snap-start">
+            <div key={cat} className="w-[100dvw] h-[100dvh] shrink-0 snap-start snap-always">
               <div 
                 ref={(el) => verticalContainerRefs.current[idx] = el}
                 className="fullscreen-snap-container hide-scrollbar"

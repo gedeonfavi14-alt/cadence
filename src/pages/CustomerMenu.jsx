@@ -190,7 +190,7 @@ export default function CustomerMenu() {
           );
 
           return (
-            <div key={cat} className="w-full shrink-0 snap-start p-1 min-h-[50vh]">
+            <div key={cat} className="w-full shrink-0 snap-start snap-always p-1 min-h-[50vh]">
               <DishGrid
                 items={categoryDishes}
                 isClient={true}

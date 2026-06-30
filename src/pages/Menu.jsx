@@ -133,7 +133,7 @@ export default function Menu() {
       </div>
 
       {/* Category Tabs */}
-      <div className="sticky top-[53px] z-20 bg-bg-primary border-b border-border-light">
+      <div className="bg-bg-primary border-b border-border-light my-4">
         <div className="flex overflow-x-auto snap-x hide-scrollbar swipe-horizontal">
           {CATEGORIES.map((cat, idx) => {
             const count = dishes.filter(d => d.category === cat || (!d.category && idx === 0)).length;
@@ -164,7 +164,7 @@ export default function Menu() {
           );
 
           return (
-            <div key={cat} className="w-full shrink-0 snap-start p-1 min-h-[50vh]">
+            <div key={cat} className="w-full shrink-0 snap-start snap-always p-1 min-h-[50vh]">
               <DishGrid
                 items={categoryDishes}
                 isClient={false}
