@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  --color-olive: #6B7C3A;
+  --color-olive-light: #8B9B4E;
+  --color-olive-dark: #5A6930;
+}
+
+/* Base definitions for light/dark themes */
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F3F4F6;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #F9FAFB;
+  --bg-input: #FFFFFF;
+  
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-muted: #9CA3AF;
+  
+  --border-light: #E5E7EB;
+  --border-strong: #D1D5DB;
+  
+  --shadow-custom: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #111111;
+  --bg-card: #0A0A0A;
+  --bg-elevated: #1F2937;
+  --bg-input: #111111;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  
+  --border-light: #1F2937;
+  --border-strong: #374151;
+  
+  --shadow-custom: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  /* Layout */
+  .app-layout {
+    @apply flex flex-col min-h-screen relative;
+  }
+  
+  .app-content {
+    @apply flex-1 p-4 pb-24 w-full max-w-lg mx-auto;
+  }
+
+  /* Cards */
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-light);
+    @apply rounded-xl p-4 transition-all duration-200;
+    box-shadow: var(--shadow-custom);
+  }
+  
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 select-none;
+  }
+  
+  .btn-primary {
+    @apply bg-olive text-white shadow-md hover:bg-olive-light active:scale-95;
+  }
+  
+  .btn-secondary {
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    @apply hover:brightness-95 active:scale-95;
+  }
+  
+  .btn-ghost {
+    color: var(--text-secondary);
+    @apply hover:bg-black/5 dark:hover:bg-white/10 active:scale-95;
+  }
+  
+  /* Form Inputs */
+  .form-group {
+    @apply flex flex-col gap-1.5 mb-4;
+  }
+  
+  .form-label {
+    color: var(--text-secondary);
+    @apply text-sm font-medium;
+  }
+  
+  .form-input {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    @apply px-4 py-3 rounded-lg w-full transition-all focus:outline-none focus:ring-2 focus:ring-olive/50 focus:border-olive;
+  }
+
+  /* Bottom Nav */
+  .bottom-nav {
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-light);
+    @apply fixed bottom-0 left-0 right-0 h-[72px] flex items-center justify-around z-50;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  .nav-item {
+    color: var(--text-secondary);
+    @apply flex flex-col items-center gap-1 p-2 text-[10px] font-medium transition-colors relative;
+  }
+  
+  .nav-item.active {
+    @apply text-olive;
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Fullscreen Scroll-Snap specific */
+  .fullscreen-snap-container {
+    @apply h-[100dvh] w-full overflow-y-scroll snap-y snap-mandatory relative bg-black;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    transform: translateZ(0);
+    touch-action: pan-y;
+  }
+  
+  .fullscreen-snap-item {
+    @apply h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-end;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Horizontal swipe container */
+  .swipe-horizontal {
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    transform: translateZ(0);
+    touch-action: pan-x;
+    scroll-behavior: smooth;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Checkbox Toggle */
+.toggle-checkbox:checked {
+  @apply right-0 border-olive;
+  right: 0;
+  border-color: #6B7C3A;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply bg-olive;
+  background-color: #6B7C3A;
+}
