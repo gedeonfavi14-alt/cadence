@@ -4,6 +4,20 @@
   --color-olive: #6B7C3A;
   --color-olive-light: #8B9B4E;
   --color-olive-dark: #5A6930;
+
+  /* Map CSS variables to Tailwind utility classes */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-input: var(--bg-input);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-border-light: var(--border-light);
+  --color-border-strong: var(--border-strong);
 }
 
 /* Base definitions for light/dark themes */

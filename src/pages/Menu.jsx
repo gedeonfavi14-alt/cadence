@@ -133,7 +133,7 @@ export default function Menu() {
       </div>
 
       {/* Category Tabs */}
-      <div className="sticky top-0 z-20 bg-bg-primary border-b border-border-light">
+      <div className="sticky top-[53px] z-20 bg-bg-primary border-b border-border-light">
         <div className="flex overflow-x-auto snap-x hide-scrollbar swipe-horizontal">
           {CATEGORIES.map((cat, idx) => {
             const count = dishes.filter(d => d.category === cat || (!d.category && idx === 0)).length;
